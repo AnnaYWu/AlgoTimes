@@ -1,0 +1,10 @@
+function comics (comic, coins, coinsNeeded, coinsOffered){
+  let fictionBooks = 0
+  if (comic > 0){
+    fictionBooks += Math.floor(coins/coinsNeeded)
+  }
+  let sellComics = Math.floor(coinsNeeded/coinsOffered)
+  fictionBooks += sellComics
+
+  if (coinsNeeded - coins % coinsNeeded)
+}
