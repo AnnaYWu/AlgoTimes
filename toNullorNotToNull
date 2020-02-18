@@ -1,0 +1,6 @@
+let obj = {"meep": null}
+
+console.log(typeof obj.meep === 'object')
+
+//null is absence of an object, which means that it is an object
+//considered it's own data type
