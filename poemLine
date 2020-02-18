@@ -1,0 +1,18 @@
+function sum (string, column) {
+  const array = string.split(' ')
+  const newString = ''
+  const count = column
+
+  for (let i = 0; i < array.length; i++) {
+    if (count > (array[i].length + 1)){
+      newString.concat(array[i], ' ')
+    } else {
+      newString.concat('\n')
+
+    }
+  }
+
+  return newString;
+}
+
+sum("Lorem ipsum dolor sit eu amet, elit na magna sem amet nulla vel purus ac ligula.", 20)
