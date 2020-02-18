@@ -1,0 +1,21 @@
+const example = async () => {
+  console.log('does this get run before bye?')
+  let dog = await "woof"
+  console.log('hello')
+  return dog
+}
+
+const promiseExample = new Promise((resolve, reject) => {
+  console.log('does this get run before bye?')
+  let dog = new Promise((resolve, reject) => resolve('woof'))
+    .then(_ => console.log('hello'))
+    .then(_ => resolve(4));
+})
+
+console.log(promiseExample);
+// console.log(example())
+console.log('bye')
+
+setTimeout(() => {
+  setTimeout(() => {
+    setTimeout(() => {}, 1000)}, 1000)}, 1000);
