@@ -1,0 +1,52 @@
+// You are invited to the cat party! Write a function that takes in two individual cats, and puts them in a community together.
+// <A,B> = A and B are in a community together
+// <C,D> = C and D are in a community together
+// <A,C> = A and C are in a community together
+// <X,Y> = X and Y are in a community together
+
+// Q: Given two individual cats, are they in the same community?
+// <B,C> = yes, they are in the same community
+// <B,Y> = no
+
+let kitties = {}
+
+function catParty (cat1, cat2) {
+  //If cats not exist in the kitties community already, put them into the community with a new array with the opposite individual
+  if (!kitties[cat1]){
+    kitties[cat1] = [cat2]
+  }
+  if (!kitties[cat2]){
+    kitties[cat2] = [cat1]
+  }
+
+  //If individuals exist in the object already, then make sure the opposite cat is not in the array.
+  if (!kitties[cat1].includes(cat2)){
+    kitties[cat1].push(cat2)
+  }
+  if (!kitties[cat2].includes(cat1)){
+    kitties[cat2].push(cat1)
+  }
+  return kitties
+}
+
+function searchParty(cat1, cat2, searched = '') {
+  if (kitties[cat1].includes(cat2)){
+    return true
+  } else{
+    for (let i = 0; i < kitties[cat1].length; i++){
+      if (kitties[cat1][i]!==searched){
+        let result = searchParty(kitties[cat1][i], cat2, cat1)
+        if (result) {
+          return true
+        }    
+     }
+    }
+  }
+  return false
+}
+
+console.log(catParty('A', 'B'))
+console.log(catParty('C', 'D'))
+console.log(catParty('A', 'C'))
+console.log(catParty('X', 'Y'))
+console.log(searchParty('D', 'A'))
